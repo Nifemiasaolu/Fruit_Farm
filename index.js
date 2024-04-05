@@ -1,7 +1,6 @@
 const fs = require("fs");
 const http = require("http");
 const url = require("url");
-
 /////////////////////////////////////////////////////////////
 //  FILES
 
@@ -32,25 +31,59 @@ const url = require("url");
 
 /////////////////////////////////////////////////////////////
 //  SERVER
-const server = http.createServer((request, response) => {
-  const pathName = request.url;
+try{
 
+
+const tempOverview = fs.readFileSync(
+  `${__dirname}/templates/template-overview`,
+  "utf-8"
+);
+const tempProduct = fs.readFileSync(
+  `${__dirname}/templates/template-product`,
+  "utf-8"
+);
+const tempCard = fs.readFileSync(
+  `${__dirname}/templates/template-card`,
+  "utf-8"
+);
+
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+const dataObj = JSON.parse(data);
+
+const server = http.createServer((req, res) => {
+  console.log(req.url);
+
+  const pathName = req.url;
+
+  // Overview page
   if (pathName === "/" || pathName === "/overview") {
-    response.end("This is OVERVIEW");
+    res.writeHead(200, { "Content-type": "text/html" });
+    res.end(tempOverview);
+
+    // Product page
   } else if (pathName === "/product") {
-    response.end("This is PRODUCT");
+    res.end(tempProduct);
+
+    // API
+  } else if (pathName === "/api") {
+    res.writeHead(200, { "Content-type": "application/json" });
+    res.end(data);
+
+    // NOT_FOUND
   } else {
-    response.writeHead(404, {
+    res.writeHead(404, {
       "Content-type": "text/html",
       "my-own-header": "hello-world",
     });
-    response.end("<h1>Page Not Found!</h1>");
+    res.end("<h1>Page Not Found!</h1>");
   }
-  response.end("Hello fron the Server World!");
+  res.end("Hello fron the Server World!");
 });
 
 server.listen(8000, "127.0.0.1", () => {
   console.log("Listening to request on port 8000");
 });
-
+} catch(error) {
+  console.log("Error reading file: ", error);
+}
 // \\////
