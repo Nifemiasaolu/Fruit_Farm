@@ -87,3 +87,63 @@ server.listen(8000, "127.0.0.1", () => {
   console.log("Error reading file: ", error);
 }
 // \\////
+
+
+
+
+
+
+// if (billerSlug === "SMARTER_GRID") {
+//   const smarterGridProducts = productPackage.filter(
+//     (product) => product.billerId === smarterGridBillerId
+//   );
+//   const productIndex = Math.floor(
+//     Math.random() * smarterGridProducts.length
+//   );
+//   const smarterGridProduct = smarterGridProducts[productIndex];
+//   productName = smarterGridProduct.slug;
+// } else if (billerSlug === "LUMOS") {
+//   const lumosProducts = productPackage.filter(
+//     (product) => product.billerId === lumosBillerId
+//   );
+//   const productIndex = Math.floor(Math.random() * lumosProducts.length);
+//   const lumosProduct = lumosProducts[productIndex];
+//   productName = lumosProduct.slug;
+// } else if (billerSlug === "CEL_ELECTRIC") {
+//   productName = "CEL_PREPAID";
+// } else if (billerSlug === "BH_ELECTRIC") {
+//   productName = "BH_PREPAID";
+// } else if (billerSlug === "CLOUD_ENERGY") {
+//   productName = "CLOUD_ENERGY_PAYGO";
+// } else if (billerSlug === "PRIVIDA") {
+//   productName = "PRIVIDA";
+// } else if (billerSlug === "PHEDC") {
+//   productName = `PHED_${verificationRequest.type}`;
+// } else if (billerSlug === "EEDC") {
+//   productName = `ENUGU_${verificationRequest.type}`;
+// } else if (billerSlug === "KADUNA_ELECTRIC") {
+//   productName = `KAEDCO_${verificationRequest.type}`;
+// } else {
+//   productName = `${billerSlug}_${verificationRequest.type}`;
+// }
+
+// Smart Example
+// if (billerSlug === "SMARTER_GRID") {
+//   // Filter the productPackage array to find products with the specified billerId
+//   const smarterGridProducts = productPackage.filter(product => product.billerId === 130);
+
+//   // Here, you can define your criteria to select the desired product dynamically
+//   // For example, you could randomly select a product or select based on some other criteria
+//   const randomIndex = Math.floor(Math.random() * smarterGridProducts.length);
+//   const desiredProductSlug = smarterGridProducts[randomIndex].slug; // Dynamically select product slug
+
+//   // Find the product with the desired slug
+//   const desiredProduct = smarterGridProducts.find(product => product.slug === desiredProductSlug);
+
+//   if (desiredProduct) {
+//     productName = desiredProduct.slug;
+//   } else {
+//     // Handle case where desired product is not found
+//     // You can set a default value or throw an error
+//     productName = "DEFAULT_PRODUCT"; // Set a default value
+//   }
